@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Navbar from './components/Navbar.jsx';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import Home from "./pages/Home"
+import Profile from './pages/Profile';
+
+library.add(fas, far);
+// adds all the icons not recommended on real projects
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar/>
+    <Profile/>
+    </>
+    
   );
 }
 
