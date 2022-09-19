@@ -14,7 +14,7 @@ function Navbar() {
         <div className="flex flex-row py-1 items-center">
           <div className="basis-1/2 md:basis-1/3">
             <Link to="/">
-              <img src="/images/logo-instagram.svg" alt="Logo" width="120" />
+              <img src="/images/pistachogram.png" alt="Logo" width="180" />
             </Link>
           </div>
 
@@ -64,7 +64,7 @@ function Navbar() {
                     <img
                       src="https://avatars.githubusercontent.com/u/107312386?v=4"
                       alt="profile"
-                      className="rounded-full w-6"
+                      className="rounded-full w-6 "
                     />
                   </Menu.Button>
                   <Transition
@@ -93,8 +93,65 @@ function Navbar() {
                                  "block px-4 py-2 text-sm text-gray-700"
                                 )}`}
                           >
-                            <FontAwesomeIcon icon="user" className="mr-2" />{" "}
+                            <FontAwesomeIcon
+                             icon="user"
+                            className="mr-2" />{" "}
                             Profile
+                          </Link>
+                          )}
+                        </Menu.Item>
+
+                        <Menu.Item>
+                          {({active}) => (
+                            <Link
+                            to="/swordanto"
+                            className={`${classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                                 "block px-4 py-2 text-sm text-gray-700"
+                                )}`}
+                          >
+                            <FontAwesomeIcon
+                             icon="bookmark"
+                            className="mr-2" />
+                            Saved
+                          </Link>
+                          )}
+                        </Menu.Item>
+
+                        <Menu.Item>
+                          {({active}) => (
+                            <Link
+                            to="/swordanto"
+                            className={`${classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                                 "block px-4 py-2 text-sm text-gray-700"
+                                )}`}
+                          >
+                            <FontAwesomeIcon
+                             icon="gear"
+                            className="mr-2"  />
+                            Settings
+                          </Link>
+                          )}
+                        </Menu.Item>
+                      </div>
+                      <div className="py-1">
+                      <Menu.Item>
+                          {({active}) => (
+                            <Link
+                            to="/"
+                            className={`${classNames(
+                              active
+                                ? "bg-gray-100 text-gray-900"
+                                : "text-gray-700",
+                                 "block px-4 py-2 text-sm text-gray-700"
+                                )}`}
+                          >
+                            Logout
                           </Link>
                           )}
                         </Menu.Item>

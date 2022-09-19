@@ -1,22 +1,36 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
+import ModalPost from "./ModalPost";
+import ModalPostActions from "./ModalPostActions";
+
 
 function Post() {
+const [isModalOpen, setModalOpen] = useState(false);
+const [isPostModalOpen, setIsPostModalOpen] = useState(false);
+
   return (
+    <>
+    <ModalPostActions open={isModalOpen} setOpen={setModalOpen} />
+    <ModalPost open={isPostModalOpen} setOpen={setIsPostModalOpen} />
     <div className="border rounded-lg border-slate-200 mb-5 bg-white">
-      <div className="p-3 flex-row">
+      <div className="p-3 flex flex-row">
         <div className="flex-1">
           <a href="" className="">
             <img
-              className="object-cover rounded-full w-8 h-8 inline"
-              src="https://i.postimg.cc/PJjN7793/DSC-6369.jpg"
+              className=" rounded-full w-8 h-8 inline"
+              src="https://picsum.photos/200/300.jpg"
             />
-            <span className="font-medium text-sm ml-2">Michele.guidetti</span>
+            <span className="font-medium text-sm ml-2">cool.places</span>
           </a>
+        </div>
+        <div>
+          <span  className="cursor-pointer" onClick={() => setModalOpen(true)} >
+            <FontAwesomeIcon icon="ellipsis" />
+          </span>
         </div>
       </div>
       <img
-        src="/images/post2.png"
+        src="https://picsum.photos/2000.jpg"
         alt="photo by a webdev"
         className=""
         width="100%"
@@ -26,7 +40,10 @@ function Post() {
           <a href="" className="mr-3 text-red-600 cursor-pointer">
             <FontAwesomeIcon icon="heart" />
           </a>
-          <a href="" className="mr-3 hover:text-gray-500 cursor-pointer">
+          <a className="mr-3 hover:text-gray-500 cursor-pointer"
+        //abre modal 
+          onClick={() => setIsPostModalOpen(true)}>
+
             <FontAwesomeIcon icon={["far", "comment"]} />
           </a>
           <a href="" className="hover:text-gray-500 cursor-pointer">
@@ -42,7 +59,7 @@ function Post() {
       </div>
       <div className="font-medium text-sm px-3">1,000 likes</div>
     <div className="px-3 text-sm">
-        <span className="font-medium">Michele.guidetti</span> sono basso
+        <span className="font-medium">cool.places</span> such a cool place!
     </div>
     <div className="text-gray-500 uppercase p-3 text-xs tracking-wide mt-2">
         12 Hours ago
@@ -68,6 +85,7 @@ function Post() {
 
 
     </div>
+    </>
   );
 }
 

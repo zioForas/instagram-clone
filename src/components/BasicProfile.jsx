@@ -3,7 +3,7 @@ import React from "react";
 function BasicProfile() {
   return (
     <div className="flex flex-row">
-      <a href="">
+      <a href="/swordanto">
         <img
           className="rounded-full"
           src="https://avatars.githubusercontent.com/u/107312386?v=4"
@@ -12,7 +12,7 @@ function BasicProfile() {
       </a>
       <div className="72 pl-2 m-auto">
         <div className="text-sm font-medium">
-            <a href="">SwordAnto</a>
+            <a href="/swordanto">SwordAnto</a>
         </div>
         <div className="text-gray-500 text-sm">
             Antonio Spada | Web developer

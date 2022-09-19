@@ -18,12 +18,12 @@ function Suggestions() {
           <a className="inline-block align-top" href="">
             <img
               className="rounded-full object-cover w-8 h-8"
-              src="https://i.postimg.cc/Vs4TGCx1/F948-BFB7-8852-4-CCC-B713-995-F73241-B98.png"
+              src="https://picsum.photos/300.jpg"
             />
           </a>
           <div className="inline-block ml-2">
             <div className="text-sm font-medium">
-                Moquita.psj
+                usuario
             </div>
             <div className="text-gray-500 text-xs">
                 Suggested for you
@@ -39,12 +39,12 @@ function Suggestions() {
           <a className="inline-block align-top" href="">
             <img
               className="rounded-full object-cover w-8 h-8"
-              src="https://i.postimg.cc/Vs4TGCx1/F948-BFB7-8852-4-CCC-B713-995-F73241-B98.png"
+              src="https://picsum.photos/100.jpg"
             />
           </a>
           <div className="inline-block ml-2">
             <div className="text-sm font-medium">
-                Moquita.psj
+                usuario
             </div>
             <div className="text-gray-500 text-xs">
                 Suggested for you
@@ -60,12 +60,12 @@ function Suggestions() {
           <a className="inline-block align-top" href="">
             <img
               className="rounded-full object-cover w-8 h-8"
-              src="https://i.postimg.cc/Vs4TGCx1/F948-BFB7-8852-4-CCC-B713-995-F73241-B98.png"
+              src="https://picsum.photos/900.jpg"
             />
           </a>
           <div className="inline-block ml-2">
             <div className="text-sm font-medium">
-                Moquita.psj
+                usuario
             </div>
             <div className="text-gray-500 text-xs">
                 Suggested for you
@@ -81,12 +81,12 @@ function Suggestions() {
           <a className="inline-block align-top" href="">
             <img
               className="rounded-full object-cover w-8 h-8"
-              src="https://i.postimg.cc/Vs4TGCx1/F948-BFB7-8852-4-CCC-B713-995-F73241-B98.png"
+              src="https://picsum.photos/400.jpg"
             />
           </a>
           <div className="inline-block ml-2">
             <div className="text-sm font-medium">
-                Moquita.psj
+                usuario
             </div>
             <div className="text-gray-500 text-xs">
                 Suggested for you

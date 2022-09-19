@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-function ProfileHeader() {
+function ProfileHeader({setIsSettingsModalOpen}) {
   return (
     <div className="grid grid-cols-3 mb-10">
       <div className="bg-green p-3 rounded flex items-start jusitfy-center">
@@ -21,7 +21,8 @@ function ProfileHeader() {
           >
             Edit Profile
           </button>
-          <a className="ml-3" href="">
+          <a className="ml-3 cursor-pointer" 
+          onClick={() =>setIsSettingsModalOpen(true)}>
             <FontAwesomeIcon icon="gear" className="text-2xl leading-6" />
           </a>
         </div>

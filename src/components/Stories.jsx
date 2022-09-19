@@ -25,7 +25,7 @@ function Stories() {
                 <a className="block bg-white p-0.5 rounded-full cursor pointer">
                     <img 
                     className='object-cover rounded-full w-16 h-16'
-                     src="https://i.postimg.cc/PJjN7793/DSC-6369.jpg" />
+                     src="https://picsum.photos/300.jpg" />
                 </a>
             </div>
             <a className="cursor-pointer" href="">
@@ -39,7 +39,7 @@ function Stories() {
                 <a className="block bg-white p-0.5 rounded-full cursor pointer">
                     <img 
                     className='object-cover rounded-full w-16 h-16'
-                     src="https://i.postimg.cc/JtwnX2cc/DSC-6372.jpg" />
+                     src="https://picsum.photos/200.jpg" />
                 </a>
             </div>
             <a className="cursor-pointer" href="">
@@ -53,7 +53,7 @@ function Stories() {
                 <a className="block bg-white p-0.5 rounded-full cursor pointer">
                     <img 
                     className='object-cover rounded-full w-16 h-16'
-                     src="https://i.postimg.cc/k5VgjC1F/DSC-6373.jpg" />
+                     src="https://picsum.photos/700.jpg" />
                 </a>
             </div>
             <a className="cursor-pointer" href="">
@@ -95,12 +95,12 @@ function Stories() {
                 <a className="block bg-white p-0.5 rounded-full cursor pointer">
                     <img 
                     className='object-cover rounded-full w-16 h-16'
-                     src="https://i.postimg.cc/Vs4TGCx1/F948-BFB7-8852-4-CCC-B713-995-F73241-B98.png" />
+                     src="https://picsum.photos/600.jpg" />
                 </a>
             </div>
             <a className="cursor-pointer" href="">
                 <div className="text-xs text-center overflow-hidden text-ellipsis w-20">
-                    Moquita.psj
+                    Moqa.max
                 </div>
             </a>
         </li>
@@ -109,7 +109,7 @@ function Stories() {
                 <a className="block bg-white p-0.5 rounded-full cursor pointer">
                     <img 
                     className='brightness-125 object-cover rounded-full w-16 h-16'
-                     src="https://i.postimg.cc/fsCDL2qV/FA95-A902-52-C1-4-E30-B30-B-42-CCAC16015-A.png" />
+                     src="https://picsum.photos/800.jpg" />
                 </a>
             </div>
             <a className="cursor-pointer" href="">
@@ -123,7 +123,7 @@ function Stories() {
                 <a className="block bg-white p-0.5 rounded-full cursor pointer">
                     <img 
                     className='brightness-200 rounded-full w-16 h-16'
-                     src="https://i.postimg.cc/5NxkdScj/E87-A0410-C78-D-43-BF-BB16-E405407-E2573.jpg" />
+                     src="https://picsum.photos/400.jpg" />
                 </a>
             </div>
             <a className="cursor-pointer" href="">

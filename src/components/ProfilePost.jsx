@@ -16,7 +16,7 @@ function ProfilePost() {
             </div>
         </a>
       <img
-        src="/images/post3.jpeg"
+        src="https://picsum.photos/500.jpg"
         alt="post"
         className="absolute inset-0 object-cover w-full h-full"
       />
