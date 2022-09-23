@@ -14,6 +14,7 @@ function ModalPost(props) {
           <img className="object-cover h-full w-full" src="https://picsum.photos/1000.jpg" />
         </div>
         <div className="w-2/5 relative pt-16">
+          
           <div className="absolute top-0 w-full p-3 flex flex-row border-b">
             <div className="flex-1">
               <a href="" className="">
