@@ -1,30 +1,38 @@
 "A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime
     @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+    "Can be used as an argument to upload files using https://github.com/jaydenseric/graphql-multipart-request-spec"
+scalar Upload
+  @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
+
 
 "Indicates what fields are available at the top level of a query operation."
 type Query {
-    "Find a single user by an identifying attribute."
-    user(
-        "Search by primary key."
-        id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
-
-        "Search by email address."
-        email: String
-            @eq
-            @rules(apply: ["prohibits:id", "required_without:id", "email"])
-    ): User @find @guard
-
-    "List multiple users."
-    users(
-        "Filters by name. Accepts SQL LIKE wildcards `%` and `_`."
-        name: String @where(operator: "like")
-    ): [User!]! @paginate(defaultCount: 10)
+    me: User @auth
+    posts: [Post] @all @guard
+    post(id: Int! @eq): Post @find @guard
+    suggestions: [User] @guard
+    feed: [Post] @guard
+    stories: [User] @guard
 }
 
 type Mutation {
   login(email: String!, password: String!): String!
-  # like(post_id: ID!): PostLike @guard
+  like(post_id: ID!): PostLike @guard
+  unlike(post_id: ID!): String @guard
+  follow(user_id: ID!): UserFollower @guard
+  unfollow(user_id: ID!): String @guard
+  addComment(post_id: ID!, comment: String!): PostComment @guard
+  updateUser(
+    name: String
+    username: String
+    bio: String
+    website: String @rules(apply: ["url"])
+    phone: String
+    email: String @rules(apply: ["email"])
+  ): User @guard
+  addPost(file: Upload!, caption: String!): Post @guard 
+
 }
 
 "Account of a person who utilizes this application."
@@ -50,6 +58,7 @@ type User {
     created_at: DateTime!
 
     updated_at: DateTime!
+
 # esto hace que los posts, seguidores y seguidos sean dinamicos y se muestre la cuenta 
     posts: [Post!]! @hasMany
     total_posts: Int! @count(relation: "posts")
@@ -92,5 +101,14 @@ type PostComment{
   created_at:DateTime!
   updated_at:DateTime!
   post: Post! @belongsTo
+  user: User! @belongsTo
+}
+
+type UserFollower {
+  id: ID!
+  user_id: ID!
+  follower_id: ID!
+  created_at:DateTime!
+  updated_at:DateTime!
   user: User! @belongsTo
 }
