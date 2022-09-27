@@ -1,11 +1,11 @@
 <?php
 
-namespace App\GraphQL\Mutations;
+namespace App\GraphQL\Queries;
 
-use App\Models\PostComment;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
 
-final class UpdateUser
+final class Feed
 {
     /**
      * @param  null  $_
@@ -18,9 +18,7 @@ final class UpdateUser
         if (! $user) {
             throw new \RuntimeException('Current user not found.');
         }
-
-        $user->update($args); 
-
-        return $user;
+        // cojemos 10 posts de la base de datos 
+     return Post::where('user_id', '!=', $user->id)->get()->sortByDesc('created_at')->take(10);
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
 namespace App\GraphQL\Mutations;
-
-use App\Models\PostComment;
 use Illuminate\Support\Facades\Auth;
+use App\Model\Post;
 
-final class UpdateUser
+final class Logout
 {
     /**
      * @param  null  $_
@@ -18,9 +17,8 @@ final class UpdateUser
         if (! $user) {
             throw new \RuntimeException('Current user not found.');
         }
+        $user->tokens()->delete();
 
-        $user->update($args); 
-
-        return $user;
+        return 'Logged out';
     }
 }
