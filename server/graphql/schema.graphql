@@ -15,25 +15,6 @@ type Query {
     stories: [User] @guard
 }
 
-# "Indicates what fields are available at the top level of a query operation."
-# type Query {
-#   "find a single user"
-# user(
-# "Search by primary key."
-#   id: ID @eq @rules(apply: ["prohibits:email", "required_without:email"])
-# "Search by email address."
-# email: String
-# @eq
-# @rules(apply: ["prohibits:id", "required_without:id", "email"])
-# ): User @find @guard
-# "list multiple users"
-# users(
-# "filtered by name accepts sql"
-# name: String @where(operator: "like")
-# ): [User!]! @paginate(defaultCount: 10)
-# }
-
-
 type Mutation {
   login(email: String!, password: String!): String!
   logout: String @guard              
@@ -91,13 +72,13 @@ type Post{
   user_id: ID!
   caption: String!
   image: String!
-  likes: Int!@count(relation: "likes")
+  likes: Int! @count(relation: "postLikes")
   created_time_ago:String!
   created_at:DateTime!
   updated_at:DateTime!
   user: User! @belongsTo
   comments: [PostComment!]! @hasMany
-  PostLikes: [PostLike!]! @hasMany
+  postLikes: [PostLike!]! @hasMany
 
 }
 # likes de los posts con fecha

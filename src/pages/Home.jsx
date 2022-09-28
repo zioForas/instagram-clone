@@ -6,15 +6,21 @@ import Footer from "../components/Footer";
 import Post from "../components/Post";
 import { useQuery } from "@apollo/client";
 import GET_FEED from "../graphql/GET_FEED";
+import GET_CURRENT_USER from "../graphql/GET_CURRENT_USER";
 
 function Home() {
   const { loading, error, data } = useQuery(GET_FEED);
+  const {
+    loading: loadingCurrentUser,
+    error: errorCurrentUser,
+    data: dataCurrentUser,
+  } = useQuery(GET_CURRENT_USER);
 
-  if (loading) {
+  if (loading || loadingCurrentUser) {
     return "Loading..";
   }
 
-  if (error) {
+  if (error || errorCurrentUser) {
     return "Error";
   }
 
@@ -24,10 +30,21 @@ function Home() {
         <div className="md:px-12 lg:px-0 col-span-3 lg:col-span-2">
           <Stories />
           {data.feed.map((post) => (
-            <Post 
-            post={post} />
+            <Post
+              key={post.id}
+              id={post.id}
+              currentUserId={dataCurrentUser.me.id}
+              caption={post.caption}
+              image={post.image}
+              username={post.user.username}
+              userImage={post.user.image}
+              likes={post.likes}
+              created_time_ago={post.created_time_ago}
+              comments={post.comments}
+              postLikes={post.postLikes}
+              post={post}
+            />
           ))}
-          
         </div>
         <div className="col-span-1 hidden lg:block">
           <div className="fixed p-5 w-80">
