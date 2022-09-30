@@ -6,7 +6,7 @@ import Modal from "./Modal";
 
 function ModalPost(props) {
   const { post, currentUserId, open, setOpen } = props;
-  const liked = isLikedByUser(currentUserId, postLikes);
+  const liked = isLikedByUser(currentUserId, post.postLikes);
 
   return (
     <Modal open={open} setOpen={setOpen} size="lg">
