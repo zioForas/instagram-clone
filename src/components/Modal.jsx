@@ -4,17 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const getSizeClasses = (size) => {
   let utilities = "";
-
   switch (size) {
-    case "xs":
-      utilities = "h-fit sm:max-w-md rounded-lg";
-      break;
-    case "lg":
-      utilities = "h-5/6 max-h-[52rem] sm:max-w-6xl rounded-md rounded-l-none";
-      break;
-    default:
-      utilities = "h-4/3 sm:max-w-screen-md rounded-lg";
-      break;
+      case "xs":
+          utilities = "h-fit sm:max-w-md rounded-lg";
+          break;
+      case "lg":
+          utilities =
+              "h-5/6 max-h-[52rem] sm:max-w-6xl rounded-md rounded-l-none";
+          break;
+      default:
+          utilities = "h-4/5 sm:max-w-screen-md rounded-lg";
+          break;
   }
   return utilities;
 };
@@ -61,7 +61,7 @@ function Modal(props) {
           >
             {title && (
               <div className="absolute top-0 w-full text-center border-b py-2 font-semibold">
-                <Dialog.Title>
+                <Dialog.Title className="inline-block">
                     {title}
                 </Dialog.Title>
                 { share && isFileDropped() && (

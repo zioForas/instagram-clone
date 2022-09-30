@@ -12,10 +12,12 @@ function ModalPost(props) {
     <Modal open={open} setOpen={setOpen} size="lg">
       <div className="flex flex-row h-full">
         <div className="w-3/5 ">
-          <img className="object-cover h-full w-full" src="https://picsum.photos/1000.jpg" />
+          <img
+            className="object-cover h-full w-full"
+            src="https://picsum.photos/1000.jpg"
+          />
         </div>
         <div className="w-2/5 relative pt-16">
-          
           <div className="absolute top-0 w-full p-3 flex flex-row border-b">
             <div className="flex-1">
               <a className="">
@@ -46,46 +48,49 @@ function ModalPost(props) {
                 <div className="px-3 text-sm">
                   <span className="font-medium mr-2">{post.user.username}</span>
                   {post.caption}
+                </div>
+              </div>
+            </div>
+            {post.comments &&
+              post.comments.map((comment, index) => (
+                <div className="flex flex-row p-3" key={comment.id}>
+                  <div>
+                    <img
+                      src={comment.user.image}
+                      alt=""
+                      className="object-cover w-8 h-8 rounded-full inline"
+                    />
                   </div>
-              </div>
-            </div>
-            {post.comments && post.comments.map((comment, index) => (
-            <div className="flex flex-row p-3" key={comment.id}>
-            <div>
-              <img
-                src={comment.user.image}
-                alt=""
-                className="object-cover w-8 h-8 rounded-full inline"
-              />
-            </div>
 
-            <div className="grow relative">
-              <div className="px-4 text-sm">
-                <span className="font-medium mr-2">{comment.user.username}</span>
-                {comment.comment}
-              </div>
-              <a
-               
-                className={`absolute top-0 right-0 block float-right text-xs cursor-pointer ${
-                  comment.is_liked
-                  ? "text-red-600"
-                  : ""
-                }`} 
-              >
-                <FontAwesomeIcon icon={[comment.is_liked ? 'fas' : 'far', 'heart']} />
-              </a>
-            </div> 
-            </div>
-            ))}
-
-          
+                  <div className="grow relative">
+                    <div className="px-4 text-sm">
+                      <span className="font-medium mr-2">
+                        {comment.user.username}
+                      </span>
+                      {comment.comment}
+                    </div>
+                    <a
+                      className={`absolute top-0 right-0 block float-right text-xs cursor-pointer ${
+                        comment.is_liked ? "text-red-600" : ""
+                      }`}
+                    >
+                      <FontAwesomeIcon icon={[comment.is_liked ? "fas" : "far", "heart"]}
+                      />
+                    </a>
+                  </div>
+                </div>
+              ))}
           </div>
           <div className="absolute bottom-0 w-full border-t bg-white">
             <div className="p-3 flex flex-row text-2-xl w-full">
               <div className="flex-1">
-                <a className="mr-3 text-red-600 cursor-pointer">
-                  <FontAwesomeIcon icon="heart" />
-                </a>
+              <a
+              className={`mr-3 ${
+                liked ? "text-red-600" : "hover:text-gray-500"
+              } cursor-pointer`}
+            >
+              <FontAwesomeIcon icon={[liked ? "fas" : "far", "heart"]} />
+            </a>
                 <a className="mr-3 hover:text-gray-500 cursor-pointer">
                   <FontAwesomeIcon icon={["far", "comment"]} />
                 </a>
@@ -99,9 +104,11 @@ function ModalPost(props) {
                 </a>
               </div>
             </div>
-            <div className="font-medium text-sm px-3">1,000 likes</div>
+            <div className="font-medium text-sm px-3">
+              {post.likes} likes
+              </div>
             <div className="text-gray-500 uppercase px-3 text-xs tracking wide my-3">
-              12 hour Ago
+              {post.created_time_ago}
             </div>
             <div className="p-3 flex flex-row border-t">
               <div className="flex items-center">
@@ -117,9 +124,7 @@ function ModalPost(props) {
                 />
               </div>
               <div className="flex items-center text-sm">
-                <a className="text-sky-500 font-medium">
-                  Post
-                </a>
+                <a className="text-sky-500 font-medium">Post</a>
               </div>
             </div>
           </div>

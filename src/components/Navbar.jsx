@@ -1,18 +1,44 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Transition } from "@headlessui/react";
+import { classNames } from "../Helpers";
+import ADD_POST from "../graphql/ADD_POST";
+import { useMutation } from "@apollo/client";
+import Modal from "./Modal";
 
-const classNames = (...classes) => {
-  return classes.filter(Boolean).join(" ")
-}
+
 
 function Navbar() {
+  const [addPost] = useMutation(ADD_POST);
+  const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
+
+  const openNewPostModal = () => {
+    setIsNewPostModalOpen(true);
+  }
+
   return (
-    <nav className="sticky top-0 w-full border border-b-1 z-50 bg-white">
+    <>
+    <Modal 
+    title="Create new post"
+    open={isNewPostModalOpen}
+    setOpen={setIsNewPostModalOpen}
+    >
+      <div className="flex flex-col items-center justify-center h-full">
+        <FontAwesomeIcon icon="photo-film" className={`text-7xl`} />
+        <h2 className="py-3 text-2xl font-light">
+          Drag photos and videos here
+        </h2>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold py-2 px-4 rounded mt-2">
+          Select from Device
+        </button>
+      </div>
+    </Modal>
+
+    <nav className="sticky top-0 min-h-fit bg-white w-full border border-b-1 z-50">
       <div className="container max-w-5xl">
         <div className="flex flex-row py-1 items-center">
-          <div className="basis-1/2 md:basis-1/3">
+          <div className="basis-1/2 pl-3 lg:p-0">
             <Link to="/">
               <img src="/images/pistachogram.png" alt="Logo" width="180" />
             </Link>
@@ -44,7 +70,7 @@ function Navbar() {
                 </a>
               </li>
               <li>
-                <a className="cursor-pointer">
+                <a className="cursor-pointer" onClick={() => openNewPostModal()}>
                   <FontAwesomeIcon icon="fa-regular fa-square-plus" />
                 </a>
               </li>
@@ -165,6 +191,7 @@ function Navbar() {
         </div>
       </div>
     </nav>
+    </>
   );
 }
 
