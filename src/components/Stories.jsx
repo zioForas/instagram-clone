@@ -19,7 +19,7 @@ function Stories() {
 
         </div>
     
-    <ul className="border rounded-lg border-slate-200 p-4 flex space-x-4 overflow-x-auto">
+    <ul className="border rounded-lg border-gray-300 p-4 flex space-x-4 overflow-x-auto">
         <li className="flex flex-col items-center space-y-1">
             <div className="bg-gradient-to-tr from-yellow-400 to-purple-600 p-0.5 rounded-full">
                 <a className="block bg-white p-0.5 rounded-full cursor pointer">

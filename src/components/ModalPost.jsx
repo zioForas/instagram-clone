@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import { isLikedByUser } from "../Helpers";
 import Modal from "./Modal";
 
 // Funciones de modal
 
 function ModalPost(props) {
-  const { open, setOpen } = props;
+  const { post, currentUserId, open, setOpen } = props;
+  const liked = isLikedByUser(currentUserId, postLikes);
 
   return (
     <Modal open={open} setOpen={setOpen} size="lg">
@@ -17,13 +18,13 @@ function ModalPost(props) {
           
           <div className="absolute top-0 w-full p-3 flex flex-row border-b">
             <div className="flex-1">
-              <a href="" className="">
+              <a className="">
                 <img
                   className="object-cover rounded-full w-8 h-8 inline"
-                  src="https://picsum.photos/200/300.jpg"
+                  src={post.user.image}
                 />
                 <span className="font-medium text-sm ml-2">
-                  cool.places
+                  {post.user.username}
                 </span>
               </a>
             </div>
@@ -36,56 +37,64 @@ function ModalPost(props) {
             <div className="flex flex-row p-3">
               <div>
                 <img
-                  src="https://picsum.photos/100.jpg"
+                  src={post.user.image}
                   alt=""
                   className="object-cover w-8 h-8 rounded-full"
                 />
               </div>
               <div>
                 <div className="px-3 text-sm">
-                  <span className="font-medium mr-2">Food.channel</span>
-                  so cool!
+                  <span className="font-medium mr-2">{post.user.username}</span>
+                  {post.caption}
                   </div>
               </div>
             </div>
-            <div className="flex flex-row p-3">
-              <div>
-                <img
-                  src="https://picsum.photos/200"
-                  alt=""
-                  className="object-cover w-8 h-8 rounded-full inline"
-                />
-              </div>
-
-              <div className="grow relative">
-                <div className="px-4 text-sm">
-                  <span className="font-medium mr-2">burger-lover</span>
-                  So very cool!
-                </div>
-                <a
-                  href=""
-                  className="absolute top-0 right-0 block float-right text-xs cursor-pointer text-red-600"
-                >
-                  <FontAwesomeIcon icon="heart" />
-                </a>
-              </div>
+            {post.comments && post.comments.map((comment, index) => (
+            <div className="flex flex-row p-3" key={comment.id}>
+            <div>
+              <img
+                src={comment.user.image}
+                alt=""
+                className="object-cover w-8 h-8 rounded-full inline"
+              />
             </div>
+
+            <div className="grow relative">
+              <div className="px-4 text-sm">
+                <span className="font-medium mr-2">{comment.user.username}</span>
+                {comment.comment}
+              </div>
+              <a
+               
+                className={`absolute top-0 right-0 block float-right text-xs cursor-pointer ${
+                  comment.is_liked
+                  ? "text-red-600"
+                  : ""
+                }`} 
+              >
+                <FontAwesomeIcon icon={[comment.is_liked ? 'fas' : 'far', 'heart']} />
+              </a>
+            </div> 
+            </div>
+            ))}
+
+          
           </div>
           <div className="absolute bottom-0 w-full border-t bg-white">
             <div className="p-3 flex flex-row text-2-xl w-full">
               <div className="flex-1">
-                <a href="" className="mr-3 text-red-600 cursor-pointer">
+                <a className="mr-3 text-red-600 cursor-pointer">
                   <FontAwesomeIcon icon="heart" />
                 </a>
                 <a className="mr-3 hover:text-gray-500 cursor-pointer">
                   <FontAwesomeIcon icon={["far", "comment"]} />
                 </a>
-                <a href="" className="hover:text-gray-500 cursor-pointer">
+                <a className="hover:text-gray-500 cursor-pointer">
                   <FontAwesomeIcon icon={["far", "paper-plane"]} />
                 </a>
               </div>
               <div className="">
-                <a href="" className="cursor-pointer hover:Text-gray-500">
+                <a className="cursor-pointer hover:Text-gray-500">
                   <FontAwesomeIcon icon={["far", "bookmark"]} />
                 </a>
               </div>
@@ -108,7 +117,7 @@ function ModalPost(props) {
                 />
               </div>
               <div className="flex items-center text-sm">
-                <a href="" className="text-sky-500 font-medium">
+                <a className="text-sky-500 font-medium">
                   Post
                 </a>
               </div>

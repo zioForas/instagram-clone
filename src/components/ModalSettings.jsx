@@ -9,37 +9,37 @@ function ModalSettings(props) {
     <Modal {...props} size="xs">
         <ul className='w-full text-sm'>
             <li>
-                <a href="" className='border-b text-center py-3 block'>
+                <a  className='border-b text-center py-3 block'>
                     Change Password
                 </a>
             </li>
             <li>
-                <a href="" className='border-b text-center py-3 block'>
+                <a  className='border-b text-center py-3 block'>
                     NameTag
                 </a>
             </li>
             <li>
-                <a href="" className='border-b text-center py-3 block'>
+                <a  className='border-b text-center py-3 block'>
                     Apps and Websites
                 </a>
             </li>
             <li>
-                <a href="" className='border-b text-center py-3 block'>
+                <a  className='border-b text-center py-3 block'>
                     Notifications
                 </a>
             </li>
             <li>
-                <a href="" className='border-b text-center py-3 block'>
+                <a  className='border-b text-center py-3 block'>
                     Edit Profile
                 </a>
             </li>
             <li>
-                <a href="" className='border-b text-center py-3 block'>
+                <a  className='border-b text-center py-3 block'>
                     Report a problem
                 </a>
             </li>
             <li>
-                <a href="" className='border-b text-center py-3 block'>
+                <a  className='border-b text-center py-3 block'>
                     Log out
                 </a>
             </li>

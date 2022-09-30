@@ -19,7 +19,7 @@ function BasicProfile() {
         </div>
       </div>
       <div className="w-32 text-right m-auto">
-        <a className="text-xs text-sky-500 font-bold cursor-pointer" href="">Sign out</a>
+        <a className="text-xs text-sky-500 font-bold cursor-pointer" >Sign out</a>
       </div>
 
     </div>

@@ -4,7 +4,7 @@ function Highlights() {
   return (
     <div className='flex flex-row p-2 content-center mb-8 space-x-2 md:space-x-10 text-sm font-semibold w-full overflow-auto'>
       <div className="w-30">
-        <a href="">
+        <a >
           <div className="border p-1 rounded-full">
               <img
                className='rounded-full'
@@ -19,7 +19,7 @@ function Highlights() {
         </a>
       </div>
       <div className="w-30">
-        <a href="">
+        <a >
           <div className="border p-1 rounded-full">
               <img
                className='rounded-full'
@@ -34,7 +34,7 @@ function Highlights() {
         </a>
       </div>
       <div className="w-30">
-        <a href="">
+        <a >
           <div className="border p-1 rounded-full">
               <img
                className='rounded-full'
@@ -49,7 +49,7 @@ function Highlights() {
         </a>
       </div>
       <div className="w-30">
-        <a href="">
+        <a >
           <div className="border p-1 rounded-full">
               <img
                className='rounded-full'

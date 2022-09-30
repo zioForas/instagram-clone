@@ -41,7 +41,7 @@ function Modal(props) {
           <div className="fixed inset-0 bg-neutral-800 bg-opacity-95 transition-opacity" />
         </Transition.Child>
 
-        <a href="" className="absolute right-6 top-4 text-white text-2xl">
+        <a  className="absolute right-6 top-4 text-white text-2xl">
           <FontAwesomeIcon icon={"x"} />
         </a>
 
