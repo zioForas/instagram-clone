@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
-use App\Models\UserFollower;
 
 class User extends Authenticatable
 {
@@ -23,11 +22,17 @@ class User extends Authenticatable
         'name',
         'username',
         'email',
-        'image',
         'bio',
         'website',
         'phone',
+        'image',
         'password',
+    ];
+
+    protected $appends = [
+        'total_posts',
+        'total_followers',
+        'total_following'
     ];
 
     /**
@@ -49,15 +54,42 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts() {
+    /**
+    * Get the posts for the user.
+    */
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function followers() {
+    /**
+    * Get the followers for the user.
+    */
+    public function followers()
+    {
         return $this->hasMany(UserFollower::class);
     }
 
-    public function following() {
+    /**
+    * Get the following for the user.
+    */
+    public function following()
+    {
         return $this->hasMany(UserFollower::class, 'follower_id', 'id');
+    }
+
+    public function getTotalPostsAttribute()
+    {
+        return $this->posts()->count();
+    }
+
+    public function getTotalFollowersAttribute()
+    {
+        return $this->followers()->count();
+    }
+
+    public function getTotalFollowingAttribute()
+    {
+        return $this->following()->count();
     }
 }

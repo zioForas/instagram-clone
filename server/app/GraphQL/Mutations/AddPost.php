@@ -2,34 +2,34 @@
 
 namespace App\GraphQL\Mutations;
 
-use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
-
-final class AddPost
+class AddPost
 {
     /**
-     * @param  null  $_
-     * @param  array{}  $args
+     * Upload a file, store it on the server and return the path.
+     *
+     * @param  mixed  $root
+     * @param  array<string, mixed>  $args
+     * @return string|null
      */
-    public function __invoke($_, array $args)
+    public function __invoke($root, array $args): ?Post
     {
         $user = Auth::user();
 
         if (! $user) {
             throw new \RuntimeException('Current user not found.');
         }
-        
+
+        /** @var \Illuminate\Http\UploadedFile $file */
         $file = $args['file'];
-        
-        $upload = $file->storePublicly('public');
-        
+
+        $upload =  $file->storePublicly('public');
         return Post::create([
             'user_id' => $user->id,
             'caption' => $args['caption'],
-            'image' => $upload
+            'image' => $upload,
         ]);
     }
-    
-}           
-//        Ɛ> I LOVE ANTONIO <3      Ɛ> I love diancinia <3
+}

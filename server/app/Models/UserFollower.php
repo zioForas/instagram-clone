@@ -8,11 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class UserFollower extends Model
 {
     use HasFactory;
-protected $fillable = [
-    'user_id',
-    'follower_id'
-];
-public function user() {
-    return $this->belongsTo(User::class);
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'follower_id',
+    ];
+
+    /**
+    * Get the user that owns the comment.
+    */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

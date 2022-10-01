@@ -34,6 +34,8 @@ return [
             // middleware, this delegates auth and permission checks to the field level.
             \Nuwave\Lighthouse\Support\Http\Middleware\AttemptAuthentication::class,
 
+            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+
             // Logs every incoming GraphQL query.
             // \Nuwave\Lighthouse\Support\Http\Middleware\LogGraphQLQueries::class,
         ],
@@ -193,9 +195,7 @@ return [
     'security' => [
         'max_query_complexity' => \GraphQL\Validator\Rules\QueryComplexity::DISABLED,
         'max_query_depth' => \GraphQL\Validator\Rules\QueryDepth::DISABLED,
-        'disable_introspection' => (bool) env('LIGHTHOUSE_SECURITY_DISABLE_INTROSPECTION', false)
-            ? \GraphQL\Validator\Rules\DisableIntrospection::ENABLED
-            : \GraphQL\Validator\Rules\DisableIntrospection::DISABLED,
+        'disable_introspection' => \GraphQL\Validator\Rules\DisableIntrospection::DISABLED,
     ],
 
     /*

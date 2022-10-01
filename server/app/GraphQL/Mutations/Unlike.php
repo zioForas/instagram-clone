@@ -1,8 +1,9 @@
 <?php
 
 namespace App\GraphQL\Mutations;
-use Illuminate\Support\Facades\Auth;
+
 use App\Models\PostLike;
+use Illuminate\Support\Facades\Auth;
 
 final class Unlike
 {
@@ -30,5 +31,4 @@ final class Unlike
 
         return 'not deleted';
     }
-
 }

@@ -2,9 +2,9 @@
 
 namespace App\GraphQL\Mutations;
 
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
 
 final class Login
 {
@@ -14,14 +14,14 @@ final class Login
      */
     public function __invoke($_, array $args)
     {
-    $user = User::where('email', $args['email'])->first();
-        
-    if (! $user || !Hash::check($args['password'], $user->password)) {
-        throw ValidationException::withMessages([
-                'email' => ['Your email or password is incorrect.']
-        ]);
+        $user = User::where('email', $args['email'])->first();
 
+        if (! $user || ! Hash::check($args['password'], $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
+
         return $user->createToken('myapptoken')->plainTextToken;
-    } 
+    }
 }

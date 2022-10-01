@@ -18,8 +18,8 @@ class UserFollowerFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=> User::all()->random()->id,
-            'follower_id'=> User::all()->random()->id,
+            'user_id' => User::all()->random()->id,
+            'follower_id' => User::all()->random()->id,
         ];
     }
 }

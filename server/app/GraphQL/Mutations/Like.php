@@ -1,6 +1,7 @@
 <?php
 
 namespace App\GraphQL\Mutations;
+
 use App\Models\PostLike;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,12 +15,13 @@ final class Like
     {
         $user = Auth::user();
 
-        if (!$user) {
-            throw new \RuntimeException('Current user not found');
+        if (! $user) {
+            throw new \RuntimeException('Current user not found.');
         }
+
         return PostLike::create([
-            'post_id' => $args['post_id'],
-            'user_id' => $user-> id,
+            'user_id' => $user->id,
+            'post_id' => $args['post_id']
         ]);
     }
 }

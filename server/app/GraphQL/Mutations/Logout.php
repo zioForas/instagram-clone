@@ -1,10 +1,10 @@
 <?php
 
 namespace App\GraphQL\Mutations;
-use Illuminate\Support\Facades\Auth;
-use App\Model\Post;
 
-final class Logout
+use Illuminate\Support\Facades\Auth;
+
+class Logout
 {
     /**
      * @param  null  $_
@@ -17,6 +17,7 @@ final class Logout
         if (! $user) {
             throw new \RuntimeException('Current user not found.');
         }
+
         $user->tokens()->delete();
 
         return 'Logged out';

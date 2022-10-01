@@ -2,7 +2,6 @@
 
 namespace App\GraphQL\Mutations;
 
-use App\Models\PostComment;
 use Illuminate\Support\Facades\Auth;
 
 final class UpdateUser
@@ -19,7 +18,14 @@ final class UpdateUser
             throw new \RuntimeException('Current user not found.');
         }
 
-        $user->update($args); 
+        $user->name = $args['name'];
+        $user->username = $args['username'];
+        $user->bio= $args['bio'];
+        $user->website = $args['website'];
+        $user->phone = $args['phone'];
+        $user->email = $args['email'];
+
+        $user->save();
 
         return $user;
     }

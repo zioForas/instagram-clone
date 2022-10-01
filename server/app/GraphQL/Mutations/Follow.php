@@ -2,8 +2,8 @@
 
 namespace App\GraphQL\Mutations;
 
-use Illuminate\Support\Facades\Auth;
 use App\Models\UserFollower;
+use Illuminate\Support\Facades\Auth;
 
 final class Follow
 {
@@ -23,6 +23,5 @@ final class Follow
             'user_id' => $args['user_id'],
             'follower_id' => $user->id
         ]);
-
     }
 }

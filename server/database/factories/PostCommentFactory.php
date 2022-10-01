@@ -21,7 +21,7 @@ class PostCommentFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'post_id' => Post::all()->random()->id,
-            'comment' => fake()->text(300)
+            'comment' => $this->faker->text(300),
         ];
     }
 }

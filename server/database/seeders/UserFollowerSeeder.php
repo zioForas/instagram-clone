@@ -16,7 +16,7 @@ class UserFollowerSeeder extends Seeder
     public function run()
     {
         UserFollower::factory()
-                ->count(500)
-                ->create();
+            ->count(500)
+            ->create();
     }
 }

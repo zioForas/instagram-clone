@@ -6,19 +6,16 @@ use App\Models\User;
 use App\Models\UserFollower;
 use Illuminate\Support\Facades\Auth;
 
-final class Stories
+class Stories
 {
-    /**
-     * @param  null  $_
-     * @param  array{}  $args
-     */
     public function __invoke($_, array $args)
     {
         $user = Auth::user();
 
-        if (!$user) {
+        if (! $user) {
             throw new \RuntimeException('Current user not found.');
         }
+
         return User::whereIn(
             'id',
             UserFollower::select(['user_id'])
