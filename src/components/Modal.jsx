@@ -65,7 +65,8 @@ function Modal(props) {
                     {title}
                 </Dialog.Title>
                 { share && isFileDropped() && (
-                    <a className="absolute right-5 text-sky-500" onClick={share}>
+                    <a className="absolute top-2 right-4 text-sky-500" 
+                    onClick={share}>
                         Share
                     </a>
                 )}

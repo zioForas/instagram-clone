@@ -7,36 +7,68 @@ import ADD_POST from "../graphql/ADD_POST";
 import { useMutation } from "@apollo/client";
 import Modal from "./Modal";
 import { useDropzone } from "react-dropzone";
+import PostPreview from "./PostPreview";
+import GET_CURRENT_USER from "../graphql/GET_CURRENT_USER";
+import { useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [addPost] = useMutation(ADD_POST);
+  const [caption, setCaption] = useState("");
   const [isNewPostModalOpen, setIsNewPostModalOpen] = useState(false);
   const [files, setFiles] = useState([]);
- 
-  const onDrop = useCallback(acceptedFiles => {
+  const navigate = useNavigate();
+  const onDrop = useCallback((acceptedFiles) => {
     setFiles(
-      acceptedFiles.map((file) => 
-      Object.assign(file, { preview: URL.createObjectURL(file) }))
-    )
+      acceptedFiles.map((file) =>
+        Object.assign(file, { preview: URL.createObjectURL(file) })
+      )
+    );
   }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+  });
+
+  const { loading, error, data } = useQuery(GET_CURRENT_USER);
+
+  if (loading) {
+    return "Loading...";
+  }
+
+  if (error) {
+    return "Error";
+  }
 
   const openNewPostModal = () => {
     setIsNewPostModalOpen(true);
   };
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-  });
 
   const isFileDropped = () => {
     return files.length !== 0;
   };
 
+  const share = async () => {
+   await addPost({
+      variables: {
+        caption,
+        file: files[0]
+      },
+      refetchQueries: [{query: GET_CURRENT_USER}]
+    });
+
+    setIsNewPostModalOpen(true);
+    navigate(`/${data.me.username}`);
+  }
   return (
     <>
       <Modal
         title="Create new post"
         open={isNewPostModalOpen}
         setOpen={setIsNewPostModalOpen}
+        size={isFileDropped() ? 'lg' : 'md'}
+        share={share}
+        isFileDropped={isFileDropped}
       >
         {!isFileDropped() ? (
           <div
@@ -53,7 +85,13 @@ function Navbar() {
             </button>
           </div>
         ) : (
-          <div>{files[0].name}</div>
+          <div>
+            <PostPreview 
+            files={files} 
+            user={data.me} 
+            caption={caption} 
+            setCaption={setCaption} />
+          </div>
         )}
       </Modal>
 

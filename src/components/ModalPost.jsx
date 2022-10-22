@@ -6,10 +6,14 @@ import Modal from "./Modal";
 
 function ModalPost(props) {
   const { post, currentUserId, open, setOpen } = props;
+  if (!post) {
+    return;
+  }
+  
   const liked = isLikedByUser(currentUserId, post.postLikes);
 
   return (
-    <Modal open={open} setOpen={setOpen} size="lg">
+   <Modal open={open} setOpen={setOpen} size="lg">
       <div className="flex flex-row h-full">
         <div className="w-3/5 ">
           <img
@@ -131,7 +135,7 @@ function ModalPost(props) {
         </div>
       </div>
     </Modal>
-  );
+   );
 }
 
 export default ModalPost;
